@@ -165,8 +165,9 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         clearPhotosInStore()
         clearPhotosInView()
         
-        let randomPage = Int.random(in: 0...Int(pin.photoPageCount))
-        fetchImagesFromNetwork(page: Int(randomPage))
+        let upperBoundary = min(Int(pin.photoPageCount), 4000/FlickrApiHelper.PER_PAGE_COUNT)
+        let randomPage = Int.random(in: 1...upperBoundary)
+        fetchImagesFromNetwork(page: randomPage)
     }
     
     private func clearPhotosInStore() {

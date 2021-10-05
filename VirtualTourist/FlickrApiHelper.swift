@@ -3,9 +3,11 @@ import Foundation
 
 class FlickrApiHelper {
     
+    static let PER_PAGE_COUNT = 50
+    
     private let baseUrl = "https://www.flickr.com/services/rest/?method="
     private let apiKey = "e8fcebdbc72429d718b774c66fe38c8a"
-    private let per_page = "per_page=50"
+    private let per_page = "per_page=\(PER_PAGE_COUNT)"
     private let formatJson = "format=json&nojsoncallback=1"
     
     private func doOnMainThread<T>(success: Bool, data: T?, resultHandler: @escaping (Bool, T?) -> ()) {

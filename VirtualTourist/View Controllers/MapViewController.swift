@@ -36,6 +36,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc func onLongPress(recognizer: UIGestureRecognizer) {
+        if recognizer.state != .began{
+            return
+        }
         let touchCoordinate = getTouchCoordinates(mapView: mapViewOutlet, recognizer: recognizer)
         
         let pin = addPinToDataStore(coordinate: touchCoordinate)
